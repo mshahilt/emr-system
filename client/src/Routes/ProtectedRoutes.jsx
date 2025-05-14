@@ -6,6 +6,7 @@ import DashboardLayout from "../Components/doctor/layout/DashboardLayout";
 import DashboardPage from "../Pages/admin/dashboard";
 import MedicinePage from "../Pages/doctor/MedicinePage";
 import PatientHistoryPage from "../Pages/doctor/PatientHIstory";
+import Prescription from "../Pages/doctor/prescription";
 
 function ProtectedRoutes() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -39,6 +40,7 @@ function ProtectedRoutes() {
         <Route path="appointment" element={<BookAppointment />} />
         <Route path="medicines" element={<MedicinePage />} />
         <Route path="patient-history" element={<PatientHistoryPage />} />
+        <Route path="prescription" element={<Prescription />} />
         {/* <Route path="support" element={<SupportPage />} /> */}
         <Route path="*" element={<Navigate to="dashboard" replace />} />
       </Routes>
