@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { 
   FaUsers, 
   FaCalendarAlt, 
@@ -24,6 +24,7 @@ function DashboardPage() {
   const [error, setError] = useState(null);
   const [selectedAppointment, setSelectedAppointment] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -64,7 +65,7 @@ function DashboardPage() {
         setLoading(false);
       }
     };
-
+    
     fetchData();
   }, []);
 
@@ -92,7 +93,7 @@ function DashboardPage() {
       }
     }
   };
-
+  console.log(dashboardData);
   return (
     <main className="p-6 w-full">
       {/* Header */}
@@ -164,7 +165,11 @@ function DashboardPage() {
               </thead>
               <tbody className="divide-y divide-gray-200">
                 {dashboardData.appointments.map((appt) => (
-                  <tr key={appt._id} className="hover:bg-gray-50">
+                  <tr
+                    key={appt._id}
+                    className="hover:bg-gray-50 cursor-pointer"
+                    onClick={()=>navigate(`/doctor/prescription?patiantId=${appt.patientId._id}&doctorId=${appt.doctorId._id}`)}
+                  >
                     <td className="py-3 px-3">
                       <div className="flex items-center">
                         <div className="h-8 w-8 rounded-full bg-blue-500 text-white flex items-center justify-center mr-3">
