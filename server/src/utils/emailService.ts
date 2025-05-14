@@ -54,7 +54,7 @@ export async function sendPrescriptionEmail(to: string, prescription: IPrescript
               <!-- Header -->
               <tr>
                 <td style="background-color: #2563EB; padding: 25px 30px; text-align: center;">
-                  <h1 style="color: white; margin: 0; font-weight: 600; font-size: 22px; letter-spacing: 0.5px;">CLINIC PPM HEALTH</h1>
+                  <h1 style="color: white; margin: 0; font-weight: 600; font-size: 22px; letter-spacing: 0.5px;">CLINIC PARAPARA HEALTH</h1>
                   <p style="color: rgba(255,255,255,0.9); margin: 5px 0 0; font-size: 15px;">Prescription Details</p>
                 </td>
               </tr>
@@ -170,7 +170,7 @@ export async function sendPrescriptionEmail(to: string, prescription: IPrescript
               <!-- Footer -->
               <tr>
                 <td style="background-color: #1E293B; color: white; padding: 20px; text-align: center; font-size: 13px;">
-                  <p style="margin: 0 0 8px;">This is an automated email from CLINIC PPM Health. Please do not reply.</p>
+                  <p style="margin: 0 0 8px;">This is an automated email from CLINIC PARAPA Health. SUAHIM SOFT Please do not reply.</p>
                   <p style="margin: 0; color: #94A3B8;">© ${new Date().getFullYear()} CLINIC PPM Health. All rights reserved.</p>
                 </td>
               </tr>
