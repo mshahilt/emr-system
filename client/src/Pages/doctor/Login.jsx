@@ -44,14 +44,6 @@ const LoginPage = () => {
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-cyan-700 to-cyan-400 px-4 relative">
       <ToastContainer />
 
-      {/* Back Button */}
-      <button className="absolute top-4 left-4 bg-blue-700 text-white text-xs px-3 py-1 rounded-full shadow hover:bg-blue-800 transition-all">
-        <div className="flex items-center gap-1">
-          <FaArrowLeft size={12} />
-          <span>Back</span>
-        </div>
-      </button>
-
       {/* Login Box */}
       <div className="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md text-center space-y-5">
         <h2 className="text-3xl font-bold text-gray-800">Doctor Login</h2>
