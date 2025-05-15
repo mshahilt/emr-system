@@ -106,7 +106,7 @@ export default function MedicinePage() {
                 <td className="px-4 py-3 border-b">{medicine.name}</td>
                 <td className="px-4 py-3 border-b">{medicine.dosageForm}</td>
                 <td className="px-4 py-3 border-b">{medicine.strength}</td>
-                <td className="px-4 py-3  space-x-3">
+                <td className="px-4 py-3 border-b space-x-5">
                   <button
                     onClick={() => {
                       setSelectedMedicine(medicine);
@@ -238,7 +238,7 @@ function AddMedicineModal({ onClose, onAdd }) {
 // View medicine modal component
 function ViewMedicineModal({ medicine, onClose }) {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50">
+    <div className="fixed inset-0 bg-black/30 backdrop-blur-xs flex items-center justify-center z-50">
       <div className="bg-white p-6 rounded-lg shadow-lg w-[90%] md:w-[500px]">
         <h2 className="text-xl font-semibold mb-4">Medicine Details</h2>
         <div className="space-y-2 text-sm text-gray-700">

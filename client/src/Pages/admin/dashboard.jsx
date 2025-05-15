@@ -31,7 +31,7 @@ function DashboardPage() {
       try {
         setLoading(true);
         const bookingResponse = await axiosInstance.get("/api/booking");
-        const appointmentsData = bookingResponse.data?.data || [];
+        const appointmentsData = bookingResponse.data?.data.filter((item)=>item.status=="booked") || [];
 
         // Get today's date in YYYY-MM-DD format
         const today = new Date().toISOString().split("T")[0];
@@ -168,7 +168,11 @@ function DashboardPage() {
                   <tr
                     key={appt._id}
                     className="hover:bg-gray-50 cursor-pointer"
-                    onClick={()=>navigate(`/doctor/prescription?patiantId=${appt.patientId._id}&doctorId=${appt.doctorId._id}`)}
+                    onClick={() =>
+                      navigate(
+                        `/doctor/prescription?patientId=${appt.patientId._id}&doctorId=${appt.doctorId._id}&appointmentId=${appt._id}`
+                      )
+                    }
                   >
                     <td className="py-3 px-3">
                       <div className="flex items-center">

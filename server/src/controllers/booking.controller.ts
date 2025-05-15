@@ -69,7 +69,7 @@ export class BookingController {
 
   static async complete(req: Request, res: Response) {
     try {
-      const updated = await BookingService.completeBooking(req.params.id, req.body.notes);
+      const updated = await BookingService.completeBooking(req.params.id, req.body?.notes);
       res.json({ success: true, message: 'Booking marked as completed', data: updated });
     } catch (err: any) {
       res.status(HttpStatusCode.NOT_FOUND).json({ success: false, message: err.message });

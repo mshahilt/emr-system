@@ -117,7 +117,7 @@ export class BookingService {
     if (!booking) throw new Error('Booking not found');
 
     booking.status = 'completed';
-    booking.notes = notes || '';
+    booking.notes = notes || 'no nots';
     await booking.save();
 
     return booking.toObject();
