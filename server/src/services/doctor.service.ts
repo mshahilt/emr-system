@@ -25,6 +25,13 @@ export class DoctorService {
           throw new Error(`Error fetching patients: ${error.message}`);
         }
       }
+       static async getDoctorById(id: string): Promise<IDoctor | null> {
+        try {
+            return await DoctorModel.findById(id);
+        } catch (error: any) {
+            throw new Error(`Error fetching doctor by id: ${error.message}`);
+        }
+    }
     static async loginDoctor(email: string, password: string): Promise<{ doctor: IDoctor; token: string }> {
         const doctor = await DoctorModel.findOne({ email });
         if (!doctor) throw new Error("Invalid credentials");

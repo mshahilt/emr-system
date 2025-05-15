@@ -13,6 +13,7 @@ router.post('/register', upload.single('profileImage'), asyncHandler(DoctorContr
 // Protected Routes
 router.get('/dashboard', authMiddleware, asyncHandler(DoctorController.getDashboard));
 router.get('/', asyncHandler(DoctorController.getAll));
+router.get('/:id', asyncHandler(DoctorController.getById));
 router.put('/:id', asyncHandler(DoctorController.update));
 router.delete('/:id', asyncHandler(DoctorController.remove));
 
