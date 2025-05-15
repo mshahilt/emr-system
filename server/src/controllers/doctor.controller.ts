@@ -50,7 +50,18 @@ export class DoctorController {
           res.status(HttpStatusCode.INTERNAL_SERVER_ERROR).json({ message: error.message });
         }
       }
-
+       static async getById(req: Request, res: Response) {
+        try {
+        const { id } = req.params;
+          const doctors = await DoctorService.getDoctorById(id);
+          res.status(HttpStatusCode.OK).json({
+            message: "Doctors fetched successfully",
+            data: doctors
+          });
+        } catch (error: any) {
+          res.status(HttpStatusCode.INTERNAL_SERVER_ERROR).json({ message: error.message });
+        }
+      }
     static async update(req: Request, res: Response) {
         try {
             const doctor = await DoctorService.updateDoctor(req.params.id, req.body);
