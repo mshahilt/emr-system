@@ -1052,7 +1052,7 @@ const Prescription = () => {
                 }
                 fileName="prescription.pdf"
               >
-                {({ blob, url, loading, error }) =>
+                {({ loading }) =>
                   loading ? (
                     "Loading document..."
                   ) : (
