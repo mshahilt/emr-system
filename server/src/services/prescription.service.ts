@@ -1,7 +1,7 @@
 import { IPrescription, Prescription } from "../models/prescription.model"
 import { Types } from "mongoose";
-import { sendPrescriptionEmail } from "../utils/emailService";
 import { PatientModel } from "../models/patient.model";
+import { prescriptionEmitter } from "../events/event/prescriptionEvents";
 export class PrescriptionService {
   static async createPrescription(data: Partial<IPrescription>) {
     try {
@@ -39,15 +39,15 @@ export class PrescriptionService {
       await newPrescription.save();
 
       const populatedPrescription = await Prescription.findById(newPrescription._id)
-        .populate("doctor", "name specialization")
+        .populate("doctor", "name specialization email phone")
         .populate("patient", "name email phone gender")
         .populate("medicines.medicine", "name");
 
       if (!populatedPrescription) {
         throw new Error("Failed to populate prescription details.");
       }
-
-      await sendPrescriptionEmail(patient.email, populatedPrescription);
+      const some = prescriptionEmitter.emit("prescription:created", patient.email, populatedPrescription);
+      console.log("some", some);
       return populatedPrescription;
     } catch (error: any) {
       console.log(error)
