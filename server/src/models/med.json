@@ -1,0 +1,48 @@
+{
+  "doctor": "60f1b6d8a9a3c45678e12345",
+  "patient": "60f1b6d8a9a3c45678e67890",
+  "diagnosis": "Hypertension and mild anxiety",
+  "notes": "Patient advised to monitor blood pressure daily",
+  "medicines": [
+    {
+      "medicine": {
+        "_id": "60f1b6d8a9a3c45678e11111",
+        "name": "paracetamol"
+      },
+      "dosage": "1 tablet",
+      "duration": "7 days",
+      "instructions": "After food",
+      "timing": "Morning"
+    },
+    {
+      "medicine": "60f1b6d8a9a3c45678e22222",
+      "isTapering": true,
+      "taperingSchedule": [
+        {
+          "dosage": "1 tablet",
+          "duration": "5 days",
+          "timing": "Morning",
+          "instructions": "After breakfast"
+        },
+        {
+          "dosage": "0.5 tablet",
+          "duration": "5 days",
+          "timing": "Morning",
+          "instructions": "After breakfast"
+        }
+      ]
+    }
+  ],
+  "labReports": [
+    {
+      "reportType": "Blood Test",
+      "findings": "Cholesterol levels slightly elevated",
+      "values": {
+        "Total Cholesterol": "220 mg/dL",
+        "HDL": "45 mg/dL",
+        "LDL": "140 mg/dL"
+      },
+      "reportDate": "2025-05-15T10:00:00.000Z"
+    }
+  ]
+}
