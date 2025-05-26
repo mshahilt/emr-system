@@ -17,7 +17,7 @@ prescriptionEmitter.on("prescription:created", async (email, prescription) => {
     console.log("i am called")
     await sendPrescriptionPDF(email, prescription)
   } catch (error) {
-    console.error("Email failed, retrying...");
+    console.error("Email failed, retrying...", error);
     // retyr_mechanism (setTimeout or requeue into a DB for retry logic)
   }
 });
