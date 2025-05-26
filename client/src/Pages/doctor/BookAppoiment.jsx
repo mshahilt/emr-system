@@ -90,7 +90,7 @@ export default function AppointmentBookingForm() {
 
     try {
       const response = await axiosInstance.get(
-        `/api/patient/patients/search?q=${searchQuery}`
+        `/api/patient/search?q=${searchQuery}`
       );
 
       setSearchResults(response.data.data);
@@ -198,7 +198,7 @@ export default function AppointmentBookingForm() {
 
     try {
       const response = await axiosInstance.post(
-        "/api/patient/patients",
+        "/api/patient",
         newPatient
       );
 

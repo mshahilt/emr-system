@@ -8,7 +8,7 @@ import {
   FaSignOutAlt,
 } from "react-icons/fa";
 import NavLink from "./NavLink";
-import { axiosInstance } from "../../../API/axiosInstance";
+// import { axiosInstance } from "../../../API/axiosInstance";
 
 function Sidebar() {
   const [doctorInfo, setDoctorInfo] = useState({
@@ -19,8 +19,8 @@ function Sidebar() {
   useEffect(() => {
     const fetchDoctorInfo = async () => {
       try {
-        const response = await axiosInstance.get("/api/doctor/profile");
-        setDoctorInfo(response.data);
+        // const response = await axiosInstance.get("/api/doctor/profile");
+        // setDoctorInfo(response.data);
       } catch (error) {
         console.error("Error fetching doctor info", error);
       }

@@ -18,7 +18,7 @@ const Navbar = () => {
   return (
     <nav className="bg-gray-800 text-white px-6 py-4">
       <div className="flex justify-between items-center">
-        <div className="text-yellow-400 text-2xl font-bold">Suhaim App</div>
+        <div className="text-yellow-400 text-2xl font-bold">Suhaim Soft</div>
 
         {/* Mobile menu toggle button */}
         <button onClick={toggleMenu} className="text-white md:hidden text-2xl">
