@@ -620,7 +620,9 @@ const Prescription = () => {
               <div>
                 <h1 className="text-2xl font-bold">Medical Prescription</h1>
                 <p className="text-blue-100 mt-1">
-                  {prescriptionId ? "Edit Prescription" : "Create New Prescription"}
+                  {prescriptionId
+                    ? "Edit Prescription"
+                    : "Create New Prescription"}
                 </p>
               </div>
               <div className="flex space-x-2 mt-4 md:mt-0">
@@ -645,7 +647,9 @@ const Prescription = () => {
           {/* Doctor and Patient Information */}
           <div className="p-4 md:p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="border rounded-lg p-4 bg-gray-50">
-              <h2 className="text-lg font-semibold text-gray-700 mb-3">Doctor</h2>
+              <h2 className="text-lg font-semibold text-gray-700 mb-3">
+                Doctor
+              </h2>
               {doctor ? (
                 <div className="space-y-2">
                   <p className="text-gray-800">
@@ -656,12 +660,14 @@ const Prescription = () => {
                   </p>
                   {doctor.specialization && (
                     <p className="text-gray-800">
-                      <span className="font-medium">Specialization:</span> {doctor.specialization}
+                      <span className="font-medium">Specialization:</span>{" "}
+                      {doctor.specialization}
                     </p>
                   )}
                   {doctor.contact && (
                     <p className="text-gray-800">
-                      <span className="font-medium">Contact:</span> {doctor.contact}
+                      <span className="font-medium">Contact:</span>{" "}
+                      {doctor.contact}
                     </p>
                   )}
                 </div>
@@ -670,7 +676,9 @@ const Prescription = () => {
               )}
             </div>
             <div className="border rounded-lg p-4 bg-gray-50">
-              <h2 className="text-lg font-semibold text-gray-700 mb-3">Patient</h2>
+              <h2 className="text-lg font-semibold text-gray-700 mb-3">
+                Patient
+              </h2>
               {patient ? (
                 <div className="space-y-2">
                   <p className="text-gray-800">
@@ -684,12 +692,14 @@ const Prescription = () => {
                   </p>
                   {patient.gender && (
                     <p className="text-gray-800">
-                      <span className="font-medium">Gender:</span> {patient.gender}
+                      <span className="font-medium">Gender:</span>{" "}
+                      {patient.gender}
                     </p>
                   )}
                   {patient.contact && (
                     <p className="text-gray-800">
-                      <span className="font-medium">Contact:</span> {patient.contact}
+                      <span className="font-medium">Contact:</span>{" "}
+                      {patient.contact}
                     </p>
                   )}
                 </div>
@@ -703,7 +713,10 @@ const Prescription = () => {
           <div className="p-4 md:p-6 border-t">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="diagnosis" className="block text-sm font-medium text-gray-700 mb-1">
+                <label
+                  htmlFor="diagnosis"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
                   Diagnosis
                 </label>
                 <input
@@ -716,7 +729,10 @@ const Prescription = () => {
                 />
               </div>
               <div>
-                <label htmlFor="notes" className="block text-sm font-medium text-gray-700 mb-1">
+                <label
+                  htmlFor="notes"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
                   Notes
                 </label>
                 <textarea
@@ -733,14 +749,19 @@ const Prescription = () => {
 
           {/* Medicines */}
           <div className="p-4 md:p-6 border-t">
-            <h2 className="text-lg font-semibold text-gray-700 mb-4">Medicines</h2>
+            <h2 className="text-lg font-semibold text-gray-700 mb-4">
+              Medicines
+            </h2>
             <div className="mb-4">
               <label className="flex items-center">
                 <input
                   type="checkbox"
                   checked={newMedicine.isTapering}
                   onChange={(e) =>
-                    setNewMedicine({ ...newMedicine, isTapering: e.target.checked })
+                    setNewMedicine({
+                      ...newMedicine,
+                      isTapering: e.target.checked,
+                    })
                   }
                   className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                 />
@@ -750,7 +771,10 @@ const Prescription = () => {
             {!newMedicine.isTapering ? (
               <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
                 <div className="md:col-span-1 relative">
-                  <label htmlFor="medicine" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label
+                    htmlFor="medicine"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
                     Medicine
                   </label>
                   <div className="relative">
@@ -766,7 +790,10 @@ const Prescription = () => {
                       className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                       placeholder="Search medicine"
                     />
-                    <Search size={16} className="absolute left-3 top-2.5 text-gray-400" />
+                    <Search
+                      size={16}
+                      className="absolute left-3 top-2.5 text-gray-400"
+                    />
                     {showMedicineDropdown && searchResults.length > 0 && (
                       <div className="absolute z-10 mt-1 w-full bg-white shadow-lg rounded-md max-h-48 overflow-auto">
                         {searchResults.map((medicine) => (
@@ -776,7 +803,9 @@ const Prescription = () => {
                             className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                           >
                             <div className="font-medium">{medicine.name}</div>
-                            <div className="text-xs text-gray-500">{medicine.type}</div>
+                            <div className="text-xs text-gray-500">
+                              {medicine.type}
+                            </div>
                           </div>
                         ))}
                       </div>
@@ -784,40 +813,61 @@ const Prescription = () => {
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="dosage" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label
+                    htmlFor="dosage"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
                     Dosage
                   </label>
                   <input
                     type="text"
                     id="dosage"
                     value={newMedicine.dosage}
-                    onChange={(e) => setNewMedicine({ ...newMedicine, dosage: e.target.value })}
+                    onChange={(e) =>
+                      setNewMedicine({ ...newMedicine, dosage: e.target.value })
+                    }
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="e.g. 500mg"
                   />
                 </div>
                 <div>
-                  <label htmlFor="duration" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label
+                    htmlFor="duration"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
                     Duration
                   </label>
                   <input
                     type="text"
                     id="duration"
                     value={newMedicine.duration}
-                    onChange={(e) => setNewMedicine({ ...newMedicine, duration: e.target.value })}
+                    onChange={(e) =>
+                      setNewMedicine({
+                        ...newMedicine,
+                        duration: e.target.value,
+                      })
+                    }
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="e.g. 5 days"
                   />
                 </div>
                 <div>
-                  <label htmlFor="instructions" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label
+                    htmlFor="instructions"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
                     Instructions
                   </label>
                   <input
                     type="text"
                     id="instructions"
                     value={newMedicine.instructions}
-                    onChange={(e) => setNewMedicine({ ...newMedicine, instructions: e.target.value })}
+                    onChange={(e) =>
+                      setNewMedicine({
+                        ...newMedicine,
+                        instructions: e.target.value,
+                      })
+                    }
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="e.g. After food"
                   />
@@ -834,57 +884,98 @@ const Prescription = () => {
               </div>
             ) : (
               <div className="mb-6">
-                <h3 className="text-sm font-medium text-gray-700 mb-2">Tapering Schedule</h3>
+                <h3 className="text-sm font-medium text-gray-700 mb-2">
+                  Tapering Schedule
+                </h3>
                 {newMedicine.taperingSchedule.map((schedule, index) => (
-                  <div key={index} className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-4">
+                  <div
+                    key={index}
+                    className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-4"
+                  >
                     <div>
-                      <label htmlFor={`tapering-dosage-${index}`} className="block text-sm font-medium text-gray-700 mb-1">
+                      <label
+                        htmlFor={`tapering-dosage-${index}`}
+                        className="block text-sm font-medium text-gray-700 mb-1"
+                      >
                         Dosage
                       </label>
                       <input
                         type="text"
                         id={`tapering-dosage-${index}`}
                         value={schedule.dosage}
-                        onChange={(e) => handleUpdateTaperingSchedule(index, "dosage", e.target.value)}
+                        onChange={(e) =>
+                          handleUpdateTaperingSchedule(
+                            index,
+                            "dosage",
+                            e.target.value
+                          )
+                        }
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="e.g. 1 tablet"
                       />
                     </div>
                     <div>
-                      <label htmlFor={`tapering-duration-${index}`} className="block text-sm font-medium text-gray-700 mb-1">
+                      <label
+                        htmlFor={`tapering-duration-${index}`}
+                        className="block text-sm font-medium text-gray-700 mb-1"
+                      >
                         Duration
                       </label>
                       <input
                         type="text"
                         id={`tapering-duration-${index}`}
                         value={schedule.duration}
-                        onChange={(e) => handleUpdateTaperingSchedule(index, "duration", e.target.value)}
+                        onChange={(e) =>
+                          handleUpdateTaperingSchedule(
+                            index,
+                            "duration",
+                            e.target.value
+                          )
+                        }
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="e.g. 5 days"
                       />
                     </div>
                     <div>
-                      <label htmlFor={`tapering-timing-${index}`} className="block text-sm font-medium text-gray-700 mb-1">
+                      <label
+                        htmlFor={`tapering-timing-${index}`}
+                        className="block text-sm font-medium text-gray-700 mb-1"
+                      >
                         Timing
                       </label>
                       <input
                         type="text"
                         id={`tapering-timing-${index}`}
                         value={schedule.timing}
-                        onChange={(e) => handleUpdateTaperingSchedule(index, "timing", e.target.value)}
+                        onChange={(e) =>
+                          handleUpdateTaperingSchedule(
+                            index,
+                            "timing",
+                            e.target.value
+                          )
+                        }
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="e.g. Morning"
                       />
                     </div>
                     <div>
-                      <label htmlFor={`tapering-instructions-${index}`} className="block text-sm font-medium text-gray-700 mb-1">
+                      <label
+                        htmlFor={`tapering-instructions-${index}`}
+                        className="block text-sm font-medium text-gray-700 mb-1"
+                      >
                         Instructions
                       </label>
                       <input
                         type="text"
                         id={`tapering-instructions-${index}`}
                         value={schedule.instructions}
-                        onChange={(e) => handleUpdateTaperingSchedule(index, "instructions", e.target.value)}
+                        onChange={(e) =>
+                          handleUpdateTaperingSchedule(
+                            index,
+                            "instructions",
+                            e.target.value
+                          )
+                        }
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="e.g. After breakfast"
                       />
@@ -907,7 +998,10 @@ const Prescription = () => {
                   Add Schedule
                 </button>
                 <div className="mt-4">
-                  <label htmlFor="medicine" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label
+                    htmlFor="medicine"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
                     Medicine
                   </label>
                   <div className="relative">
@@ -923,7 +1017,10 @@ const Prescription = () => {
                       className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                       placeholder="Search medicine"
                     />
-                    <Search size={16} className="absolute left-3 top-2.5 text-gray-400" />
+                    <Search
+                      size={16}
+                      className="absolute left-3 top-2.5 text-gray-400"
+                    />
                     {showMedicineDropdown && searchResults.length > 0 && (
                       <div className="absolute z-10 mt-1 w-full bg-white shadow-lg rounded-md max-h-48 overflow-auto">
                         {searchResults.map((medicine) => (
@@ -933,7 +1030,9 @@ const Prescription = () => {
                             className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                           >
                             <div className="font-medium">{medicine.name}</div>
-                            <div className="text-xs text-gray-500">{medicine.type}</div>
+                            <div className="text-xs text-gray-500">
+                              {medicine.type}
+                            </div>
                           </div>
                         ))}
                       </div>
@@ -953,7 +1052,10 @@ const Prescription = () => {
             )}
 
             <div className="mb-6">
-              <label htmlFor="timing" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="timing"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Timing
               </label>
               <div className="flex items-center space-x-4">
@@ -977,7 +1079,10 @@ const Prescription = () => {
                     }}
                     className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                   />
-                  <label htmlFor="morning" className="ml-2 text-sm text-gray-700">
+                  <label
+                    htmlFor="morning"
+                    className="ml-2 text-sm text-gray-700"
+                  >
                     Morning
                   </label>
                 </div>
@@ -1001,7 +1106,10 @@ const Prescription = () => {
                     }}
                     className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                   />
-                  <label htmlFor="afternoon" className="ml-2 text-sm text-gray-700">
+                  <label
+                    htmlFor="afternoon"
+                    className="ml-2 text-sm text-gray-700"
+                  >
                     Afternoon
                   </label>
                 </div>
@@ -1062,7 +1170,10 @@ const Prescription = () => {
                 <tbody className="bg-white divide-y divide-gray-200">
                   {medicines.length === 0 ? (
                     <tr>
-                      <td colSpan={7} className="px-6 py-4 text-center text-gray-500">
+                      <td
+                        colSpan={7}
+                        className="px-6 py-4 text-center text-gray-500"
+                      >
                         No medicines added yet
                       </td>
                     </tr>
@@ -1073,19 +1184,29 @@ const Prescription = () => {
                           <div className="text-sm font-medium text-gray-900">
                             {medicine.medicine.name}
                           </div>
-                          <div className="text-xs text-gray-500">{medicine.medicine.type}</div>
+                          <div className="text-xs text-gray-500">
+                            {medicine.medicine.type}
+                          </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          {medicine.isTapering ? "See Tapering Schedule" : medicine.dosage}
+                          {medicine.isTapering
+                            ? "See Tapering Schedule"
+                            : medicine.dosage}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          {medicine.isTapering ? "See Tapering Schedule" : medicine.duration}
+                          {medicine.isTapering
+                            ? "See Tapering Schedule"
+                            : medicine.duration}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          {medicine.isTapering ? "See Tapering Schedule" : medicine.instructions}
+                          {medicine.isTapering
+                            ? "See Tapering Schedule"
+                            : medicine.instructions}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          {medicine.isTapering ? "See Tapering Schedule" : medicine.timing}
+                          {medicine.isTapering
+                            ? "See Tapering Schedule"
+                            : medicine.timing}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                           {medicine.isTapering && medicine.taperingSchedule
@@ -1115,73 +1236,122 @@ const Prescription = () => {
 
           {/* Lab Reports */}
           <div className="p-4 md:p-6 border-t">
-            <h2 className="text-lg font-semibold text-gray-700 mb-4">Lab Reports</h2>
+            <h2 className="text-lg font-semibold text-gray-700 mb-4">
+              Lab Reports
+            </h2>
             <div className="mb-6">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                 <div>
-                  <label htmlFor="reportType" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label
+                    htmlFor="reportType"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
                     Report Type
                   </label>
                   <input
                     type="text"
                     id="reportType"
                     value={newLabReport.reportType}
-                    onChange={(e) => setNewLabReport({ ...newLabReport, reportType: e.target.value })}
+                    onChange={(e) =>
+                      setNewLabReport({
+                        ...newLabReport,
+                        reportType: e.target.value,
+                      })
+                    }
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="e.g. Blood Test"
                   />
                 </div>
                 <div>
-                  <label htmlFor="findings" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label
+                    htmlFor="findings"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
                     Findings
                   </label>
                   <input
                     type="text"
                     id="findings"
                     value={newLabReport.findings}
-                    onChange={(e) => setNewLabReport({ ...newLabReport, findings: e.target.value })}
+                    onChange={(e) =>
+                      setNewLabReport({
+                        ...newLabReport,
+                        findings: e.target.value,
+                      })
+                    }
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="e.g. Cholesterol levels slightly elevated"
                   />
                 </div>
                 <div>
-                  <label htmlFor="reportDate" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label
+                    htmlFor="reportDate"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
                     Report Date
                   </label>
                   <input
                     type="date"
                     id="reportDate"
                     value={newLabReport.reportDate}
-                    onChange={(e) => setNewLabReport({ ...newLabReport, reportDate: e.target.value })}
+                    onChange={(e) =>
+                      setNewLabReport({
+                        ...newLabReport,
+                        reportDate: e.target.value,
+                      })
+                    }
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
               </div>
-              <h3 className="text-sm font-medium text-gray-700 mb-2">Lab Values</h3>
+              <h3 className="text-sm font-medium text-gray-700 mb-2">
+                Lab Values
+              </h3>
               {newLabReport.values.map((val, index) => (
-                <div key={index} className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                <div
+                  key={index}
+                  className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4"
+                >
                   <div>
-                    <label htmlFor={`value-name-${index}`} className="block text-sm font-medium text-gray-700 mb-1">
+                    <label
+                      htmlFor={`value-name-${index}`}
+                      className="block text-sm font-medium text-gray-700 mb-1"
+                    >
                       Name
                     </label>
                     <input
                       type="text"
                       id={`value-name-${index}`}
                       value={val.name}
-                      onChange={(e) => handleUpdateLabReportValue(index, "name", e.target.value)}
+                      onChange={(e) =>
+                        handleUpdateLabReportValue(
+                          index,
+                          "name",
+                          e.target.value
+                        )
+                      }
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                       placeholder="e.g. Total Cholesterol"
                     />
                   </div>
                   <div>
-                    <label htmlFor={`value-value-${index}`} className="block text-sm font-medium text-gray-700 mb-1">
+                    <label
+                      htmlFor={`value-value-${index}`}
+                      className="block text-sm font-medium text-gray-700 mb-1"
+                    >
                       Value
                     </label>
                     <input
                       type="text"
                       id={`value-value-${index}`}
                       value={val.value}
-                      onChange={(e) => handleUpdateLabReportValue(index, "value", e.target.value)}
+                      onChange={(e) =>
+                        handleUpdateLabReportValue(
+                          index,
+                          "value",
+                          e.target.value
+                        )
+                      }
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                       placeholder="e.g. 220 mg/dL"
                     />
@@ -1238,7 +1408,10 @@ const Prescription = () => {
                 <tbody className="bg-white divide-y divide-gray-200">
                   {labReports.length === 0 ? (
                     <tr>
-                      <td colSpan={5} className="px-6 py-4 text-center text-gray-500">
+                      <td
+                        colSpan={5}
+                        className="px-6 py-4 text-center text-gray-500"
+                      >
                         No lab reports added yet
                       </td>
                     </tr>
@@ -1259,7 +1432,9 @@ const Prescription = () => {
                             : "-"}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          {new Date(report.reportDate).toLocaleDateString("en-GB")}
+                          {new Date(report.reportDate).toLocaleDateString(
+                            "en-GB"
+                          )}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                           <button
@@ -1280,11 +1455,11 @@ const Prescription = () => {
           {/* Footer */}
           <div className="bg-gray-50 px-4 py-4 sm:px-6 border-t flex justify-end">
             <button
-              onClick={handleSavePrescription}
+              onClick={() => setShowPDFModal(true)}
               className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md font-medium flex items-center"
             >
               <FileText size={16} className="mr-2" />
-              Save Prescription
+              See Preview
             </button>
           </div>
         </div>
@@ -1294,15 +1469,26 @@ const Prescription = () => {
       {showPDFModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg p-6 w-full max-w-4xl">
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-lg font-semibold">Prescription PDF Preview</h2>
-              <button
-                onClick={() => setShowPDFModal(false)}
-                className="px-4 py-2 bg-red-700 hover:bg-red-800 text-white hover:text-red-100 border rounded"
-              >
-                Close
-              </button>
+            <div className="flex flex-wrap justify-between items-center gap-2 mb-4">
+              <h2 className="text-lg font-semibold text-gray-800">
+                Prescription PDF Preview
+              </h2>
+
+              <div className="flex gap-2">
+                <button className="flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition">
+                  <Download size={16} className="mr-2" />
+                  Download PDF
+                </button>
+
+                <button
+                  onClick={() => setShowPDFModal(false)}
+                  className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md transition"
+                >
+                  Close
+                </button>
+              </div>
             </div>
+
             <div className="h-[500px] overflow-auto">
               <PDFViewer width="100%" height="100%">
                 <PrescriptionPDF
@@ -1331,9 +1517,11 @@ const Prescription = () => {
                   loading ? (
                     "Loading document..."
                   ) : (
-                    <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md flex items-center">
-                      <Download size={16} className="mr-2" />
-                      Download PDF
+                    <button
+                      className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md flex items-center"
+                      onClick={handleSavePrescription}
+                    >
+                      Save Prescription and send Email
                     </button>
                   )
                 }

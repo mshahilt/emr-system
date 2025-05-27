@@ -62,7 +62,9 @@ export class PrescriptionService {
 
   static async getPrescriptionsByPatient(patientId: string) {
     if (!Types.ObjectId.isValid(patientId)) throw new Error("Invalid patient ID");
-    return await Prescription.find({ patient: patientId }).populate("doctor medicines.medicine");
+    return await Prescription.find({ patient: patientId }).populate(
+      "doctor patient medicines.medicine"
+    );
   }
 
   static async getPrescriptionsByDoctor(doctorId: string) {
