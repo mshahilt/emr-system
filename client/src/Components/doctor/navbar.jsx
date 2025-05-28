@@ -16,7 +16,7 @@ const Navbar = () => {
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   return (
-    <nav className="bg-gray-800 text-white px-6 py-4">
+    <nav className="bg-gray-800 text-white px-6 py-6">
       <div className="flex justify-between items-center">
         <div className="text-yellow-400 text-2xl font-bold">Suhaim Soft</div>
 
@@ -57,14 +57,6 @@ const Navbar = () => {
               className="flex items-center gap-1 hover:text-yellow-400"
             >
               <FaSignInAlt /> Login
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/doctor/registration"
-              className="flex items-center gap-1 hover:text-yellow-400"
-            >
-              <FaUserPlus /> Create Account
             </Link>
           </li>
         </ul>
@@ -109,15 +101,7 @@ const Navbar = () => {
               <FaSignInAlt /> Login
             </Link>
           </li>
-          <li>
-            <Link
-              onClick={toggleMenu}
-              to="/signup"
-              className="flex items-center gap-1 hover:text-yellow-400"
-            >
-              <FaUserPlus /> Create Account
-            </Link>
-          </li>
+          
         </ul>
       )}
     </nav>
