@@ -9,7 +9,7 @@ import {
 } from "react-icons/fa";
 import NavLink from "./NavLink";
 // import { axiosInstance } from "../../../API/axiosInstance";
-
+import doctorImg from "../../../assets/doctor_img.jpg";
 function Sidebar() {
   const [doctorInfo, setDoctorInfo] = useState({
     name: "Dr. Mansoor Ali.Vp",
@@ -39,8 +39,13 @@ function Sidebar() {
       {/* Logo and Doctor Info */}
       <div className="flex flex-col items-center mb-10">
         <div className="w-12 h-12 md:w-20 md:h-20 bg-white rounded-full flex items-center justify-center shadow-md">
-          <FaUserMd className="text-blue-800 text-2xl md:text-3xl" />
+          <img
+            className="w-full h-full object-cover rounded-full border-2 border-white"
+            src={doctorImg}
+            alt="Doctor"
+          />
         </div>
+
         <h2 className="mt-4 text-base md:text-lg font-semibold hidden md:block">
           {doctorInfo.name}
         </h2>
