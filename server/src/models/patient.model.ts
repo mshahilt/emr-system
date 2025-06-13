@@ -7,12 +7,6 @@ export interface IPatient extends Document {
   gender: string;
   age: string;
   dob: Date;
-  address: {
-    street: string;
-    city: string;
-    state: string;
-    pincode: string;
-  };
   createdAt: Date;
   updatedAt: Date;
 }
@@ -24,13 +18,7 @@ const patientSchema = new Schema<IPatient>(
     phone: { type: String, required: true, unique: true },
     age: { type: String, required: true},
     gender: { type: String, enum: ['male', 'female', 'other'], required: true },
-    dob: { type: Date, required: true },
-    address: {
-      street: { type: String, required: true },
-      city: { type: String, required: true },
-      state: { type: String, required: true },
-      pincode: { type: String, required: true }
-    }
+    dob: { type: Date },
   },
   { timestamps: true }
 );

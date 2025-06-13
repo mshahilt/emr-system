@@ -39,9 +39,9 @@ export default function AppointmentBookingForm() {
 
   const [selectedSlot, setSelectedSlot] = useState(null);
 
-  const [bookingNotes, setBookingNotes] = useState("");
+  // const [bookingNotes, setBookingNotes] = useState("");
 
-  const [bookingReason, setBookingReason] = useState("");
+  // const [bookingReason, setBookingReason] = useState("");
 
   const [showNewPatientForm, setShowNewPatientForm] = useState(false);
 
@@ -64,15 +64,15 @@ export default function AppointmentBookingForm() {
 
     dob: "",
 
-    address: {
-      street: "",
+    // address: {
+    //   street: "",
 
-      city: "",
+    //   city: "",
 
-      state: "",
+    //   state: "",
 
-      pincode: "",
-    },
+    //   pincode: "",
+    // },
   });
 
   // Fetch doctors on component mount
@@ -237,9 +237,9 @@ export default function AppointmentBookingForm() {
 
         status: "booked",
 
-        reason: bookingReason,
+        // reason: bookingReason,
 
-        notes: bookingNotes,
+        // notes: bookingNotes,
       };
 
        await axiosInstance.post("/api/booking", 
@@ -269,9 +269,9 @@ export default function AppointmentBookingForm() {
 
     setSelectedSlot(null);
 
-    setBookingNotes("");
+    // setBookingNotes("");
 
-    setBookingReason("");
+    // setBookingReason("");
 
     setSearchQuery("");
 
@@ -327,7 +327,7 @@ export default function AppointmentBookingForm() {
 
       <div className="bg-blue-600 text-white p-6">
         <h1 className="text-xl font-bold">
-          Hospital Appointment Booking System
+          Clinic Appointment Booking System
         </h1>
 
         <p className="text-sm opacity-90">Receptionist Portal</p>
@@ -621,7 +621,7 @@ export default function AppointmentBookingForm() {
                   </div>
                 </div>
 
-                <div className="mb-4">
+                {/* <div className="mb-4">
                   <h4 className="text-sm font-medium text-gray-700 mb-2">
                     Address
                   </h4>
@@ -671,7 +671,7 @@ export default function AppointmentBookingForm() {
                       />
                     </div>
                   </div>
-                </div>
+                </div> */}
 
                 <div className="flex justify-end">
                   <button
@@ -930,29 +930,29 @@ export default function AppointmentBookingForm() {
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            {/* <label className="block text-sm font-medium text-gray-700 mb-1">
               Reason for Visit
-            </label>
+            </label> */}
 
-            <textarea
+            {/* <textarea
               value={bookingReason}
               onChange={(e) => setBookingReason(e.target.value)}
               className="w-full border rounded-md p-2 h-20 focus:ring-blue-500 focus:border-blue-500"
               placeholder="Enter reason for appointment"
-            ></textarea>
+            ></textarea> */}
           </div>
 
           <div className="mb-6">
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            {/* <label className="block text-sm font-medium text-gray-700 mb-1">
               Additional Notes
-            </label>
+            </label> */}
 
-            <textarea
+            {/* <textarea
               value={bookingNotes}
               onChange={(e) => setBookingNotes(e.target.value)}
               className="w-full border rounded-md p-2 h-16 focus:ring-blue-500 focus:border-blue-500"
               placeholder="Enter any additional information"
-            ></textarea>
+            ></textarea> */}
           </div>
 
           {bookingError && (
