@@ -2,6 +2,7 @@ import { Schema, model, Document } from 'mongoose';
 
 export interface IMedicine extends Document {
   name: string;
+  content: string;
   dosageForm: string;
   strength: string; 
 }
@@ -9,6 +10,7 @@ export interface IMedicine extends Document {
 const MedicineSchema = new Schema<IMedicine>(
   {
     name: { type: String, required: true, trim: true },
+    content: { type: String, required: true, trim: true },
     dosageForm: { type: String, required: true },
     strength: { type: String, required: true },
   },
