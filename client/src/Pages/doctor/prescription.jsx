@@ -12,70 +12,121 @@ import { ToastContainer, toast } from "react-toastify";
 import { Document, Page, Text, View, StyleSheet } from "@react-pdf/renderer";
 import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 
-// PDF Styles
 const styles = StyleSheet.create({
-  page: { padding: 30, fontSize: 12 },
+  page: {
+    padding: 15,
+    fontFamily: 'Helvetica',
+    fontSize: 12,
+    backgroundColor: '#FFFFFF',
+  },
   header: {
-    backgroundColor: "#4CAF50",
-    color: "white",
+    backgroundColor: '#009688',
     padding: 10,
-    textAlign: "center",
+    textAlign: 'center',
+    color: '#FFFFFF',
   },
-  headerText: { fontSize: 14, fontWeight: "bold" },
-  subHeaderText: { fontSize: 10 },
-  section: { marginTop: 10 },
+  headerText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  subHeaderText: {
+    fontSize: 10,
+    marginTop: 2,
+  },
+  section: {
+    marginTop: 8,
+    marginBottom: 8,
+  },
+  sectionTitle: {
+    fontWeight: 'bold',
+    fontSize: 13,
+    marginBottom: 2,
+  },
   row: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginBottom: 5,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
-  label: { fontWeight: "bold" },
   table: {
-    display: "table",
-    width: "auto",
-    marginTop: 10,
-    borderStyle: "solid",
-    borderWidth: 1,
-    borderColor: "#bfbfbf",
+    borderWidth: 0.4,
+    borderColor: '#787878',
   },
   tableRow: {
-    flexDirection: "row",
-    borderBottomWidth: 1,
-    borderColor: "#bfbfbf",
+    flexDirection: 'row',
+    borderBottomWidth: 0.4,
+    borderColor: '#787878',
   },
   tableColHeader: {
-    width: "20%",
-    borderRightWidth: 1,
-    borderColor: "#bfbfbf",
-    backgroundColor: "#f0f0f0",
+    backgroundColor: '#F0F0F0',
     padding: 5,
+    borderRightWidth: 0.4,
+    borderColor: '#787878',
+    textAlign: 'center',
   },
   tableCol: {
-    width: "20%",
-    borderRightWidth: 1,
-    borderColor: "#bfbfbf",
     padding: 5,
+    borderRightWidth: 0.4,
+    borderColor: '#787878',
+    textAlign: 'center',
   },
-  tableCellHeader: { fontSize: 10, fontWeight: "bold", textAlign: "center" },
-  tableCell: { fontSize: 10, textAlign: "center" },
+  tableCellHeader: {
+    fontWeight: 'bold',
+    fontSize: 11,
+  },
+  tableCell: {
+    fontSize: 11,
+  },
+  label: {
+    fontWeight: 'bold',
+  },
+  hr: {
+    borderBottomWidth: 0.4,
+    borderColor: '#787878',
+    marginVertical: 6,
+  },
   footer: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 20,
-    left: 0,
-    right: 0,
-    textAlign: "center",
+    left: 15,
+    right: 15,
+    backgroundColor: '#FAFAFA',
+    padding: 5,
     fontSize: 10,
-    color: "#555",
+  },
+  signature: {
+    position: 'absolute',
+    bottom: 40,
+    right: 15,
+    textAlign: 'right',
   },
 });
-
-// PDF Document Component
 const PrescriptionPDF = ({
-  doctor,
-  patient,
-  diagnosis,
-  medicines,
-  labReports,
+  doctor = { name: "MANSOOR ALI.VP", regNo: "35083", contact: "9895353078" },
+  patient = { name: "John Doe", mobile: "1234567890", age: "30" },
+  diagnosis = "Fever",
+  medicines = [
+    {
+      name: "Paracetamol",
+      type: "Tablet",
+      dosage: "500mg",
+      quantity: "5",
+      remark: "As needed",
+      content: "Take after food",
+    },
+    {
+      name: "Ibuprofen",
+      type: "Tablet",
+      dosage: "400mg",
+      quantity: "3",
+      remark: "As needed",
+      tapering: [{ dosage: "200mg", days: "2" }],
+    },
+  ],
+  labReports = [
+    {
+      reportType: "Blood Test",
+      findings: "Normal results with slightly elevated WBC count",
+    },
+  ],
 }) => {
   const today = new Date();
   const formattedDate = today.toLocaleString("en-GB", {
@@ -86,39 +137,38 @@ const PrescriptionPDF = ({
     minute: "2-digit",
     hour12: true,
   });
-
+console.log(medicines);
   return (
     <Document>
       <Page size="A4" style={styles.page}>
         {/* Header */}
         <View style={styles.header}>
-          <Text style={styles.headerText}>Dr {doctor?.name}, MD (PHYSICIAN)</Text>
+          <Text style={styles.headerText}>{doctor.name}, MD (PHYSICIAN)</Text>
           <Text style={styles.subHeaderText}>
-            General Practitioner | Reg No: {doctor?._id} | +91 {doctor?.contact}
+            General Practitioner | Reg No: {doctor.regNo} | +91 {doctor.contact}
           </Text>
           <Text style={styles.subHeaderText}>
-            Pathappiriyam | BOOKING NO: +91 8606344694
+            Pathappiriyam | BOOKING NO: +918606344694
           </Text>
         </View>
 
         {/* Patient Information */}
         <View style={styles.section}>
-          <Text style={{ fontWeight: "bold", marginBottom: 5 }}>
-            Patient Information
-          </Text>
+          <Text style={styles.sectionTitle}>Patient Information</Text>
           <View style={styles.row}>
-            <View>
+            <View style={{ width: "60%" }}>
               <Text>
-                <Text style={styles.label}>Name:</Text> {patient?.name}
+                <Text style={styles.label}>Name:</Text> {patient.name}
               </Text>
               <Text>
-                <Text style={styles.label}>Phone:</Text> {patient?.contact}
+                <Text style={styles.label}>Phone:</Text> {patient.phone}
               </Text>
               <Text>
-                <Text style={styles.label}>Age:</Text> {patient?.age}
+                <Text style={styles.label}>Age:</Text> {patient.age}
               </Text>
               <Text>
-                <Text style={styles.label}>Diagnosis:</Text> {diagnosis || "N/A"}
+                <Text style={styles.label}>Diagnosis:</Text>{" "}
+                {diagnosis || "N/A"}
               </Text>
               <Text>
                 <Text style={styles.label}>Date & Time:</Text> {formattedDate}
@@ -126,122 +176,39 @@ const PrescriptionPDF = ({
             </View>
             <View style={{ width: "30%" }}>
               <Text>
-                <Text style={styles.label}>SpO2:</Text> -
+                <Text style={styles.label}>SpO2:</Text> 98%
               </Text>
               <Text>
-                <Text style={styles.label}>BP:</Text> -
+                <Text style={styles.label}>BP:</Text> 120/80
               </Text>
               <Text>
-                <Text style={styles.label}>Pulse:</Text> -
+                <Text style={styles.label}>Pulse:</Text> 72
               </Text>
               <Text>
-                <Text style={styles.label}>Temp:</Text> -
+                <Text style={styles.label}>Temp:</Text> 37.5°C
               </Text>
               <Text>
-                <Text style={styles.label}>Weight:</Text> -
+                <Text style={styles.label}>Weight:</Text> 70kg
               </Text>
             </View>
           </View>
         </View>
 
-        {/* Medicines Table */}
-        <View style={styles.section}>
-          <View style={styles.table}>
-            <View style={styles.tableRow}>
-              <View style={styles.tableColHeader}>
-                <Text style={styles.tableCellHeader}>SI</Text>
-              </View>
-              <View style={styles.tableColHeader}>
-                <Text style={styles.tableCellHeader}>Medicine</Text>
-              </View>
-              <View style={styles.tableColHeader}>
-                <Text style={styles.tableCellHeader}>Type</Text>
-              </View>
-              <View style={styles.tableColHeader}>
-                <Text style={styles.tableCellHeader}>Dosage</Text>
-              </View>
-              <View style={styles.tableColHeader}>
-                <Text style={styles.tableCellHeader}>Tapering Schedule</Text>
-              </View>
-            </View>
-            {medicines.length > 0 ? (
-              medicines.map((med, index) => (
-                <View style={styles.tableRow} key={index}>
-                  <View style={styles.tableCol}>
-                    <Text style={styles.tableCell}>{index + 1}</Text>
-                  </View>
-                  <View style={styles.tableCol}>
-                    <Text style={styles.tableCell}>{med.medicine.name}</Text>
-                  </View>
-                  <View style={styles.tableCol}>
-                    <Text style={styles.tableCell}>{med.medicine.type}</Text>
-                  </View>
-                  <View style={styles.tableCol}>
-                    <Text style={styles.tableCell}>
-                      {med.isTapering ? "See Tapering Schedule" : med.dosage || "-"}
-                    </Text>
-                  </View>
-                  <View style={styles.tableCol}>
-                    <Text style={styles.tableCell}>
-                      {med.isTapering && med.tapering?.length > 0
-                        ? med.tapering
-                            .map(
-                              (schedule) =>
-                                `${schedule.dosage} for ${schedule.days}`
-                            )
-                            .join("; ")
-                        : "-"}
-                    </Text>
-                  </View>
-                </View>
-              ))
-            ) : (
-              <View style={styles.tableRow}>
-                <View style={styles.tableCol}>
-                  <Text style={styles.tableCell}>-</Text>
-                </View>
-                <View style={styles.tableCol}>
-                  <Text style={styles.tableCell}>-</Text>
-                </View>
-                <View style={styles.tableCol}>
-                  <Text style={styles.tableCell}>-</Text>
-                </View>
-                <View style={styles.tableCol}>
-                  <Text style={styles.tableCell}>-</Text>
-                </View>
-                <View style={styles.tableCol}>
-                  <Text style={styles.tableCell}>-</Text>
-                </View>
-              </View>
-            )}
-          </View>
-        </View>
+        <View style={styles.hr} />
 
-        {/* Lab Reports Section */}
+        {/* Lab Report */}
         <View style={styles.section}>
-          <Text style={{ fontWeight: "bold", marginBottom: 5 }}>
-            Lab Reports
-          </Text>
+          <Text style={styles.sectionTitle}>Lab Report</Text>
           {labReports.length > 0 ? (
             labReports.map((report, index) => (
               <View key={index} style={{ marginBottom: 10 }}>
                 <Text>
-                  <Text style={styles.label}>Report Type:</Text> {report.reportType}
+                  <Text style={styles.label}>Report Type:</Text>{" "}
+                  {report.reportType}
                 </Text>
                 <Text>
-                  <Text style={styles.label}>Findings:</Text> {report.findings || "-"}
-                </Text>
-                <Text>
-                  <Text style={styles.label}>Values:</Text>{" "}
-                  {report.values
-                    ? Object.entries(report.values)
-                        .map(([key, value]) => `${key}: ${value}`)
-                        .join(", ")
-                    : "-"}
-                </Text>
-                <Text>
-                  <Text style={styles.label}>Report Date:</Text>{" "}
-                  {new Date(report.reportDate).toLocaleDateString("en-GB") || "-"}
+                  <Text style={styles.label}>Findings:</Text>{" "}
+                  {report.findings || "-"}
                 </Text>
               </View>
             ))
@@ -250,10 +217,133 @@ const PrescriptionPDF = ({
           )}
         </View>
 
+        <View style={styles.hr} />
+
+        {/* Medicines Table */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Medicines</Text>
+          <View style={styles.table}>
+            <View style={styles.tableRow}>
+              <View style={[styles.tableColHeader, { width: "10%" }]}>
+                <Text style={styles.tableCellHeader}>Sl</Text>
+              </View>
+              <View style={[styles.tableColHeader, { width: "30%" }]}>
+                <Text style={styles.tableCellHeader}>Medicine</Text>
+              </View>
+              <View style={[styles.tableColHeader, { width: "20%" }]}>
+                <Text style={styles.tableCellHeader}>Type</Text>
+              </View>
+              <View style={[styles.tableColHeader, { width: "20%" }]}>
+                <Text style={styles.tableCellHeader}>Dosage</Text>
+              </View>
+              <View style={[styles.tableColHeader, { width: "10%" }]}>
+                <Text style={styles.tableCellHeader}>Days</Text>
+              </View>
+              <View style={[styles.tableColHeader, { width: "20%" }]}>
+                <Text style={styles.tableCellHeader}>Remarks</Text>
+              </View>
+            </View>
+            {medicines.length > 0 ? (
+              medicines.map((med, index) => (
+                <View key={index}>
+                  <View style={styles.tableRow}>
+                    <View style={[styles.tableCol, { width: "10%" }]}>
+                      <Text style={styles.tableCell}>{index + 1}</Text>
+                    </View>
+                    <View style={[styles.tableCol, { width: "30%" }]}>
+                      <Text style={styles.tableCell}>
+                        {med.medicine.name || "-"}
+                      </Text>
+                    </View>
+                    <View style={[styles.tableCol, { width: "20%" }]}>
+                      <Text style={styles.tableCell}>
+                        {med.medicine.dosageForm || "-"}
+                      </Text>
+                    </View>
+                    <View style={[styles.tableCol, { width: "20%" }]}>
+                      <Text style={styles.tableCell}>
+                        {med.dosage || "-"}
+                      </Text>
+                    </View>
+                    <View style={[styles.tableCol, { width: "10%" }]}>
+                      <Text style={styles.tableCell}>
+                        {med.duration || "-"}
+                      </Text>
+                    </View>
+                    <View style={[styles.tableCol, { width: "20%" }]}>
+                      <Text style={styles.tableCell}>{med.instructions || "-"}</Text>
+                    </View>
+                  </View>
+                  {med.content && (
+                    <View
+                      style={[styles.tableRow, { backgroundColor: "#FAFAFA" }]}
+                    >
+                      <View style={[styles.tableCol, { width: "100%" }]}>
+                        <Text
+                          style={[styles.tableCell, { fontStyle: "italic" }]}
+                        >
+                          ({med.content})
+                        </Text>
+                      </View>
+                    </View>
+                  )}
+                  {med.tapering &&
+                    med.tapering.map((taper, tIndex) => (
+                      <View
+                        key={tIndex}
+                        style={[
+                          styles.tableRow,
+                          { backgroundColor: "#FAFAFA" },
+                        ]}
+                      >
+                        <View style={[styles.tableCol, { width: "60%" }]} />
+                        <View style={[styles.tableCol, { width: "20%" }]}>
+                          <Text
+                            style={[styles.tableCell, { color: "#646464" }]}
+                          >
+                            {taper.dosage || "-"}
+                          </Text>
+                        </View>
+                        <View style={[styles.tableCol, { width: "10%" }]}>
+                          <Text
+                            style={[styles.tableCell, { color: "#646464" }]}
+                          >
+                            {taper.days || "-"}
+                          </Text>
+                        </View>
+                        <View style={[styles.tableCol, { width: "20%" }]} />
+                      </View>
+                    ))}
+                </View>
+              ))
+            ) : (
+              <View style={styles.tableRow}>
+                <View style={[styles.tableCol, { width: "100%" }]}>
+                  <Text style={styles.tableCell}>-</Text>
+                </View>
+              </View>
+            )}
+          </View>
+        </View>
+
+        {/* Lab Tests for Next Visit */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Lab Tests On Next Visit</Text>
+          <Text>{labReports[0]?.reportType || "-"}</Text>
+        </View>
+
+        {/* Signature Placeholder */}
+        <View style={styles.signature}>
+          <Text style={{ fontStyle: "italic" }}>
+            Signature: _____________________
+          </Text>
+          <Text style={{ fontWeight: "bold" }}>DR MANSOOR ALI V.P</Text>
+        </View>
+
         {/* Footer */}
         <View style={styles.footer}>
           <Text>Prescription Generated by Suhaim Software</Text>
-          <Text>Visit us: www.clinicppm.site</Text>
+          <Text>Visit us: www.clinicppm.com</Text>
         </View>
       </Page>
     </Document>
