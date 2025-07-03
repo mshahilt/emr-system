@@ -145,7 +145,7 @@ console.log(medicines);
         <View style={styles.header}>
           <Text style={styles.headerText}>{doctor.name}, MD (PHYSICIAN)</Text>
           <Text style={styles.subHeaderText}>
-            General Practitioner | Reg No: {doctor.regNo} | +91 {doctor.contact}
+            General Practitioner | Reg No: 35083 | +91 9895353078
           </Text>
           <Text style={styles.subHeaderText}>
             Pathappiriyam | BOOKING NO: +918606344694
@@ -261,9 +261,7 @@ console.log(medicines);
                       </Text>
                     </View>
                     <View style={[styles.tableCol, { width: "20%" }]}>
-                      <Text style={styles.tableCell}>
-                        {med.dosage || "-"}
-                      </Text>
+                      <Text style={styles.tableCell}>{med.dosage || "-"}</Text>
                     </View>
                     <View style={[styles.tableCol, { width: "10%" }]}>
                       <Text style={styles.tableCell}>
@@ -271,7 +269,9 @@ console.log(medicines);
                       </Text>
                     </View>
                     <View style={[styles.tableCol, { width: "20%" }]}>
-                      <Text style={styles.tableCell}>{med.instructions || "-"}</Text>
+                      <Text style={styles.tableCell}>
+                        {med.instructions || "-"}
+                      </Text>
                     </View>
                   </View>
                   {med.content && (
