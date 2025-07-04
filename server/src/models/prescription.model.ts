@@ -10,19 +10,17 @@ interface ILabReport {
 
 interface ITaperingSchedule {
   dosage: string;
-  duration: string;
-  timing?: string;
-  instructions?: string;
+  days: string;
 }
 
 interface IMedicineEntry {
   medicine: Types.ObjectId;
   isTapering?: boolean;
-  taperingSchedule?: ITaperingSchedule[];
-  dosage?: string;
+  dosage: string;
   duration?: string;
   instructions?: string;
   timing?: string;
+  tapering?: ITaperingSchedule[];
 }
 
 export interface IPrescription extends Document {
@@ -36,22 +34,21 @@ export interface IPrescription extends Document {
   updatedAt: Date;
 }
 
-const LabReportSchema = new Schema<ILabReport>(
+const TaperingScheduleSchema = new Schema<ITaperingSchedule>(
   {
-    reportType: { type: String },
-    findings: { type: String },
-    values: { type: Map, of: String },
-    reportDate: { type: Date, default: Date.now },
+    dosage: { type: String, required: true },
+    days: { type: String, required: true },
   },
   { _id: false }
 );
 
-const TaperingScheduleSchema = new Schema<ITaperingSchedule>(
+const LabReportSchema = new Schema<ILabReport>(
   {
-    dosage: { type: String, required: true },
-    duration: { type: String, required: true },
-    timing: { type: String },
-    instructions: { type: String },
+    name: { type: String },
+    reportType: { type: String },
+    findings: { type: String },
+    values: { type: Map, of: String },
+    reportDate: { type: Date, default: Date.now },
   },
   { _id: false }
 );
@@ -64,11 +61,11 @@ const PrescriptionSchema = new Schema<IPrescription>(
       {
         medicine: { type: Schema.Types.ObjectId, ref: 'Medicine', required: true },
         isTapering: { type: Boolean, default: false },
-        taperingSchedule: { type: [TaperingScheduleSchema], default: undefined },
-        dosage: { type: String },
+        dosage: { type: String, required: true },
         duration: { type: String },
         instructions: { type: String },
         timing: { type: String },
+        tapering: [TaperingScheduleSchema]
       }
     ],
     diagnosis: { type: String },

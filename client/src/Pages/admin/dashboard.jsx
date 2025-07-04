@@ -43,7 +43,10 @@ function DashboardPage() {
 
         // Count unique patients
         const uniquePatients = new Set(
-          appointmentsData.map((appt) => appt.patientId._id)
+          appointmentsData.map((appt) => {
+            console.log("appt.patientId._id",appt.patientId._id);
+            return appt.patientId._id;
+          })
         ).size;
 
         setDashboardData({

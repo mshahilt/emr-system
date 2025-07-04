@@ -166,6 +166,7 @@ function AddMedicineModal({ onClose, onAdd }) {
   const [formData, setFormData] = useState({
     name: "",
     dosageForm: "",
+    content: "",
     strength: "",
   });
 
@@ -200,7 +201,7 @@ function AddMedicineModal({ onClose, onAdd }) {
           />
           <input
             name="dosageForm"
-            placeholder="Dosage Form"
+            placeholder="Type"
             value={formData.dosageForm}
             onChange={handleChange}
             className="w-full border px-3 py-2 rounded"
@@ -210,6 +211,14 @@ function AddMedicineModal({ onClose, onAdd }) {
             name="strength"
             placeholder="Strength"
             value={formData.strength}
+            onChange={handleChange}
+            className="w-full border px-3 py-2 rounded"
+            required
+          />
+          <input
+            name="content"
+            placeholder="Content"
+            value={formData.content}
             onChange={handleChange}
             className="w-full border px-3 py-2 rounded"
             required
@@ -246,10 +255,13 @@ function ViewMedicineModal({ medicine, onClose }) {
             <strong>Name:</strong> {medicine.name}
           </p>
           <p>
-            <strong>Dosage Form:</strong> {medicine.dosageForm}
+            <strong>Type :</strong> {medicine.dosageForm}
           </p>
           <p>
             <strong>Strength:</strong> {medicine.strength}
+          </p>
+          <p>
+            <strong>Content:</strong> {medicine.content}
           </p>
           {/* Add more fields here if needed */}
         </div>
